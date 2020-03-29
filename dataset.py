@@ -47,7 +47,7 @@ def dataset_paths(paths):
         image = tf.image.resize_image_with_crop_or_pad(image, 300, 300)
         image.set_shape([300, 300, 3])
         return image
-    dataset = tf.Dataset.from_tensor_slices(tf.constant(paths))
+    dataset = tf.data.Dataset.from_tensor_slices(tf.constant(paths))
     dataset = dataset.map(load_image)
     dataset = dataset.batch(FLAGS.batch_size)
     dataset = dataset.shuffle(buffer_size=5000)
